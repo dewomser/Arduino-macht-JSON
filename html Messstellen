@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title></title>
+    <meta content="">
+    <style></style>
+  </head>
+  <body>
+  
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>One-wire Temperatur Erfassung</title>
+</head>
+<body>
+    <div id="placeholder"></div>
+    <script src="jquery.js"></script>
+    <script>
+  $.getJSON('onewire.json', function(data) {
+        var output="<ul>";
+                for (var i in data.messtellen ) {
+            output+="<li>Adresse:" + data.messtellen[i].device_address + " Temperatur in C:" + data.messtellen[i].temp_c + "Temperatur in F:" + data.messtellen[i].temp_f + "</li>";
+        }
+
+        output+="</ul>";
+        document.getElementById("placeholder").innerHTML=output;
+  });
+    </script>
+ Für die bash:echo "1234" > /dev/ttyACM0 ; cat < /dev/ttyACM0 > ~/javascript-test/onewire.json
+
+</body>
+</html>
